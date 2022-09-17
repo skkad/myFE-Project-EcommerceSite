@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from "react";
+import Skeleton from "react-loading-skeleton";
+import { NavLink } from "react-router-dom";
 
 const Product = ()=>{
     const [data,setData] = useState([]);
@@ -18,9 +20,10 @@ const Product = ()=>{
                 setData(await response.clone().json());
                 setFilter(await response.json());
                 setLoding(false);
-                console.log(filter);
+                // console.log(filter);
             }
             return ()=>{
+                // eslint-disable-next-line
                 componentMounted = false;
             }
         }
@@ -31,7 +34,19 @@ const Product = ()=>{
         return (
             //npm i react-skeleton-package to replace line34
             <>
-                <h2 className="d-flex justify-content-center">Loading.......</h2>
+                {/* <h2 className="d-flex justify-content-center">Loading.......</h2> */}
+                <div className="col-md-3">
+                    <Skeleton  height={250}/>
+                </div>
+                <div className="col-md-3">
+                    <Skeleton  height={250}/>
+                </div>
+                <div className="col-md-3">
+                    <Skeleton  height={250}/>
+                </div>
+                <div className="col-md-3">
+                    <Skeleton  height={250}/>
+                </div>
             </>
         )
     }
@@ -60,8 +75,8 @@ const Product = ()=>{
                                     <img src={product.image} className="card-img-top" alt={product.title} height="250px"/>
                                     <div className="card-body">
                                         <h5 className="card-title">{product.title.substring(0,12)}</h5>
-                                        <p className="card-text">${product.price}</p>
-                                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                                        <p className="card-text lead fw-bold">${product.price}</p>
+                                        <NavLink to={`/product/${product.id}`} className="btn btn-outline-dark">Buy</NavLink>
                                     </div>
                                 </div>
                             </div>

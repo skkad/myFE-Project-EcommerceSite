@@ -1,17 +1,20 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import {Switch,Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 import Product from './components/Product';
+import ProductSelected from './components/ProductSelected';
 
 function App() {
   return (
     <>
       <Navbar/>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Product} />
-      </Switch>     
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route  exact path="/product" element={<Product />} />
+        <Route  exact path="/product/:id" element={<ProductSelected />} />
+      </Routes>  
     </>  
   );
 }
