@@ -2,6 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Cart = ()=>{
+    
+    const handleButton = (product)=>{
+
+    }
     return (
         <>
             <div>
@@ -24,3 +28,5 @@ const Cart = ()=>{
         </>
     )
 }
+
+export default Cart;
